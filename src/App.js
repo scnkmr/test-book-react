@@ -8,11 +8,12 @@ class App extends React.Component {
 		this.state = {
 			error: null,
 			isLoded: false,
-			questions: []
+			questions: [],
+			responses: []
 		}
 	}
 	componentDidMount(){
-		fetch("http://localhost:81/test-book-backend/questions.php") //http://testbook.epizy.com/main.php?testid=2068
+		fetch("http://localhost:81/test-book-backend/questions.php")
 		.then(res => res.json())
 		.then(
 			(result) => {
@@ -21,9 +22,6 @@ class App extends React.Component {
 					questions: result.questions
 				  });
 				},
-				// Note: it's important to handle errors here
-				// instead of a catch() block so that we don't swallow
-				// exceptions from actual bugs in components.
 				(error) => {
 				  this.setState({
 					isLoaded: true,
@@ -42,9 +40,17 @@ class App extends React.Component {
     return (
     <div className="App">
       <div className="title">{this.props.title}</div>
-      {questions.map(question_react_var => (
-      <Question question={question_react_var.question} marks={question_react_var.question.marks} options={question_react_var.options}/>
-      ))}
+      {questions.map((question_react_var, index) => (
+				<Question 
+				index={index}
+				question={question_react_var.question} 
+				marks={question_react_var.marks} 
+				options={question_react_var.optionsGroup} 
+				type={question_react_var.questionType} 
+				key={question_react_var.questionid} 
+				Questionid_for_option_name={question_react_var.questionid}/>
+			))}
+			<button>Submit</button>
     </div>
   );
   }
