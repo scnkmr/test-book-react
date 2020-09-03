@@ -2,10 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import Auth from './Auth'
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
-    <App title="Title"/>,
+  <div>
+    <Auth/>
+    <App title="Title"/>
+    </div>,
   document.getElementById('root')
 );
 

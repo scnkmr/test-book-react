@@ -9,7 +9,7 @@ class App extends React.Component {
 			error: null,
 			isLoded: false,
 			questions: [],
-			responses: []
+			responses: [{}]
 		}
 	}
 	componentDidMount(){
